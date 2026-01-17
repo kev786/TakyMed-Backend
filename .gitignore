@@ -1,0 +1,33 @@
+# Java & Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mtj.tmp/
+
+# Log files
+*.log
+
+# Virtual Machine & OS
+.DS_Store
+Thumbs.db
+tmp/
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.iws
+
+# IDE - VS Code
+.vscode/
+
+# Docker & Database
+postgres_data/
+.env
+
+# Spring Boot
+help.md
+.mvn/
+mvnw
+mvnw.cmd
