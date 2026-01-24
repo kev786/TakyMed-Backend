@@ -31,3 +31,111 @@ help.md
 .mvn/
 mvnw
 mvnw.cmd
+# Java & Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mtj.tmp/
+
+# Log files
+*.log
+
+# Virtual Machine & OS
+.DS_Store
+Thumbs.db
+tmp/
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.iws
+
+# IDE - VS Code
+.vscode/
+
+# Docker & Database
+postgres_data/
+.env
+
+# Spring Boot
+help.md
+.mvn/
+mvnw
+mvnw.cmd
+# =============================================================================
+# TAKYMED - GLOBAL GITIGNORE (Root Level)
+# =============================================================================
+
+# --- JAVA & MAVEN ---
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.zip
+**/*.tar.gz
+.mtj.tmp/
+
+# --- MAVEN WRAPPER ---
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+**/mvnw
+**/mvnw.cmd
+**/.mvn/
+
+# --- SPRING BOOT SPECIFIC ---
+**/HELP.md
+**/help.md
+**/activemq-data
+**/bin
+
+# --- IDEs ---
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# STS / Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+**/build/
+
+# --- INFRASTRUCTURE & SECRETS ---
+postgres_data/
+.env
+docker-compose.override.yml
+
+# --- LOGS ---
+*.log
+**/logs/
+
+# --- OS & TEMP FILES ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+tmp/
+*.tmp
+*.bak
+*.swp
