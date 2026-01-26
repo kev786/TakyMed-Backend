@@ -1,0 +1,21 @@
+services:
+  takymed-db:
+    image: postgres:18.1-alpine
+    container_name: takymed-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: takymed_db
+    volumes:
+      - takymed-db:/var/lib/postgresql/data
+    networks:
+      - takymed-network
+
+networks:
+  takymed-network:
+    driver: bridge
+
+volumes:
+  takymed-db:
