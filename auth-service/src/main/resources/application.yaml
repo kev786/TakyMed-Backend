@@ -1,38 +1,8 @@
 spring:
   application:
     name: auth-service
-
-  # 1. GESTION DOCKER COMPOSE
-  docker:
-    compose:
-      file: ../docker-compose.yml
-      enabled: true
-      #lifecycle-management: start_and_stop # Démarre la DB au lancement de l'app et l'arrête à la fermeture
-      readiness:
-        wait: ALWAYS
-
-  # 2. CONFIGURATION DE LA BASE DE DONNÉES (Lien avec le .env)
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-
-  # 3. CONFIGURATION JPA / HIBERNATE
-  jpa:
-    open-in-view: false
-    hibernate:
-      # 'update' permet de créer/modifier les tables automatiquement à chaque lancement
-      ddl-auto: update 
-      
-    show-sql: true # Affiche les requêtes SQL dans la console (pratique en dev)
-    properties:
-      hibernate:
-        "[format_sql]": true
-
-
-  # 4. CONFIGURATION DE LA SÉCURITÉ (Placeholder pour l'instant)
-  # Nous configurerons les détails dans une classe Java de sécurité plus tard
+  profiles:
+    active: dev # Profil par défaut
 
 server:
   port: 8081
@@ -57,7 +27,7 @@ management:
     health:
       show-details: always
 
-# 7.CONFIGRATION SWAGGER
+# 7. CONFIGURATION SWAGGER
 springdoc:
   api-docs:
     path: /v3/api-docs

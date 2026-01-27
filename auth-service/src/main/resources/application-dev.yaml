@@ -1,0 +1,23 @@
+spring:
+  # CONFIGURATION DE LA BASE DE DONNÉES (Dev utilise Docker)
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  # GESTION DOCKER COMPOSE (Activé en dev)
+  docker:
+    compose:
+      file: ../docker-compose.yml
+      enabled: true
+      readiness:
+        wait: ALWAYS
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
