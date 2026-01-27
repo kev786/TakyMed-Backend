@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "spring.cloud.gateway.server.mvc.globalcors.cors-configurations.[/**]",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.globalcors.cors-configurations.[/**]'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-origins",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-origins'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-methods",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-methods'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-headers",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.globalcors.cors-configurations.allowed-headers'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.routes.id",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.routes.id'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.routes.predicates",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.routes.predicates'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.routes.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.routes.uri'"
+  },
+  {
+    "name": "spring.cloud.gateway.server.mvc.routes.filters",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.gateway.server.mvc.routes.filters'"
+  }
+]}
