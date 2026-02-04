@@ -2,7 +2,9 @@ package com.takymed.auth_service.services.impl;
 
 import com.takymed.auth_service.dto.AuthResponse;
 import com.takymed.auth_service.dto.LoginRequest;
+import com.takymed.auth_service.dto.ProfileRequest;
 import com.takymed.auth_service.dto.RegisterRequest;
+import com.takymed.auth_service.dto.UserResponse;
 import com.takymed.auth_service.entities.User;
 import com.takymed.auth_service.exceptions.AuthException;
 import com.takymed.auth_service.exceptions.ResourceNotFoundException;
@@ -10,7 +12,6 @@ import com.takymed.auth_service.mappers.UserMapper;
 import com.takymed.auth_service.repositories.UserRepository;
 import com.takymed.auth_service.security.JwtUtils;
 import com.takymed.auth_service.services.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
@@ -28,6 +28,15 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
     private final UserMapper userMapper;
+
+    public AuthServiceImpl(AuthenticationManager authenticationManager, UserRepository userRepository,
+            PasswordEncoder passwordEncoder, JwtUtils jwtUtils, UserMapper userMapper) {
+        this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtUtils = jwtUtils;
+        this.userMapper = userMapper;
+    }
 
     @Override
     public AuthResponse login(LoginRequest loginRequest) {
@@ -59,5 +68,26 @@ public class AuthServiceImpl implements AuthService {
 
         // Auto-login after registration
         return login(new LoginRequest(registerRequest.email(), registerRequest.password()));
+    }
+
+    @Override
+    @Transactional
+    public UserResponse updateProfile(ProfileRequest profileRequest) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new AuthException("Utilisateur non authentifié.");
+        }
+
+        String email = authentication.getName();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur non trouvé : " + email));
+
+        user.setLastName(profileRequest.lastName());
+        user.setFirstName(profileRequest.firstName());
+        user.setPhone(profileRequest.phone());
+        user.setAvatarUrl(profileRequest.avatarUrl());
+
+        User updatedUser = userRepository.save(user);
+        return userMapper.toResponse(updatedUser);
     }
 }

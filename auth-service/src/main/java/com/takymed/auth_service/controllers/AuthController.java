@@ -2,12 +2,15 @@ package com.takymed.auth_service.controllers;
 
 import com.takymed.auth_service.dto.AuthResponse;
 import com.takymed.auth_service.dto.LoginRequest;
+import com.takymed.auth_service.dto.ProfileRequest;
 import com.takymed.auth_service.dto.RegisterRequest;
+import com.takymed.auth_service.dto.UserResponse;
 import com.takymed.auth_service.services.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +30,11 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return ResponseEntity.ok(authService.register(registerRequest));
+    }
+
+    @PutMapping("/profile")
+    public ResponseEntity<UserResponse> updateProfile(
+            @Valid @RequestBody ProfileRequest profileRequest) {
+        return ResponseEntity.ok(authService.updateProfile(profileRequest));
     }
 }
