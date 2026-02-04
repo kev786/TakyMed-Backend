@@ -15,7 +15,8 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
   instance:
-    prefer-ip-address: true # Meilleure pratique en microservices sur Ubuntu
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
 
 # 6. ACTUATOR (Pour le monitoring de la santé du service)
 management:
