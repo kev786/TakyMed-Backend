@@ -8,12 +8,10 @@ spring:
         webmvc:
           # 1. DÉFINITION DES ROUTES
           routes:
-            - id: auth-service # AJOUT DU TIRET ICI
+            - id: auth-service
               uri: lb://auth-service
               predicates:
                 - Path=/api/v1/auth/**
-              filters:
-                - StripPrefix=3 # Enlève /api, /v1, /auth
 
 # 2. CONFIGURATION DU SERVEUR
 server:
