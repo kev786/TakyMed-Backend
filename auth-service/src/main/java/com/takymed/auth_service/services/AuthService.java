@@ -12,4 +12,8 @@ public interface AuthService {
     AuthResponse register(RegisterRequest registerRequest);
 
     UserResponse updateProfile(ProfileRequest profileRequest);
+
+    void forgotPassword(String email);
+
+    void resetPassword(String token, String newPassword);
 }
